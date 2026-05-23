@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://bd0i2gmgb3883"]
+
+[ext_resource type="Script" uid="uid://drrw2md3s47k1" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bxke3wuvr6do5" path="res://maze_gen.tscn" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://ce1va0humnfbx" path="res://maze_sol.tscn" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bgh73g0xjblke" path="res://assets/tile_set.png" id="4_7mycd"]
+[ext_resource type="Script" uid="uid://brdbdvsrsbusb" path="res://camera_2d.gd" id="5_lquwl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272bh"]
+texture = ExtResource("4_7mycd")
+texture_region_size = Vector2i(1, 1)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5vw27"]
+tile_size = Vector2i(1, 1)
+sources/0 = SubResource("TileSetAtlasSource_272bh")
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_0xm2m")
+
+[node name="maze_gen" parent="." instance=ExtResource("2_lquwl")]
+
+[node name="maze_sol" parent="." instance=ExtResource("3_7mycd")]
+
+[node name="grid" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_5vw27")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(388, 360)
+script = ExtResource("5_lquwl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+offset_left = -176.0
+offset_top = -111.0
+offset_right = 1133.0
+offset_bottom = 823.0
+mouse_filter = 2
+color = Color(0.0823529, 0.427451, 0.0823529, 1)

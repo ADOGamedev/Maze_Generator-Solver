@@ -1,0 +1,7 @@
+.godot/
+.vscode/
+.import/
+*.import
+export_presets.cfg
+*.tmp
+
